@@ -1,12 +1,13 @@
 using Interworks.API.Interfaces;
+using Interworks.API.Models;
 
 namespace Interworks.API.Services {
-    public class DiscountService : IDiscountService {
+    public class DiscountService  {
 
-        private readonly IDiscountRepository _discountRepository;
+        private readonly IRepositoryAsync<Discount> _discountRepository;
 
-        public DiscountService(IDiscountRepository _discountRepository) {
-            this._discountRepository = _discountRepository;
+        public DiscountService(IRepositoryAsync<Discount> userRepository) {
+            this._discountRepository = userRepository;
         }
 
 
