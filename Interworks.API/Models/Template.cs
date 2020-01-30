@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Interworks.API.Models {
     public class Template {
         [Key]
-        public int id { get; set; }
+        public Guid id { get; set; }
 
         public string key { get; set; } // onPurchaseApproved, 
 

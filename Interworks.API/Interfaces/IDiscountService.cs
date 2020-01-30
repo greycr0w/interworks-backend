@@ -1,6 +1,6 @@
 namespace Interworks.API.Interfaces {
     
-    public interface IDiscount {
+    public interface IDiscountService {
         
     }
 }

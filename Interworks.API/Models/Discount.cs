@@ -1,12 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Interworks.API.Interfaces;
 
 namespace Interworks.API.Models {
     
-    public class Discount {
+    public class Discount : IPrimaryEntity {
+
         [Key]
-        public int id { get; set; }
-        
+        public Guid id { get; set; }
+        public DateTimeOffset createdAt { get; set; }
+        public DateTimeOffset? updatedAt { get; set; }
+
         public string name { get; set; }
         
         public bool isFixed { get; set; }
@@ -19,7 +24,8 @@ namespace Interworks.API.Models {
         
         public DateTimeOffset startsAt { get; set; }
         
-        public DateTimeOffset createdAt { get; set; }
+        public List<User> eligibleUsers { get; set; }
+
     }
 
    

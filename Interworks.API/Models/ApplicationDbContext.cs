@@ -9,7 +9,7 @@ namespace Interworks.API.Models {
         public DbSet<User> users { get; set; }
         
         //public DbSet<Category> categories { get; set; }
-
+        public DbSet<Discount> discounts { get; set; }
         public DbSet<Product> products { get; set; }
         
         public DbSet<Order> purchases { get; set; }
@@ -33,6 +33,9 @@ namespace Interworks.API.Models {
                     .Builder
                     .HasMaxLength(256, ConfigurationSource.Convention);
             }
+            
+            
+            
             
             
         }

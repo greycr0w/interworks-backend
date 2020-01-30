@@ -5,8 +5,8 @@ namespace Interworks.API.Interfaces {
         
         Guid id { get; set; }
 
-        DateTimeOffset created_at { get; set; }
+        DateTimeOffset createdAt { get; set; }
          
-        DateTimeOffset? updated_at { get; set; }
+        DateTimeOffset? updatedAt { get; set; }
     }
 }

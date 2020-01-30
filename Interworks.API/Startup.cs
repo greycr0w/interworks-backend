@@ -28,12 +28,6 @@ namespace Interworks.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          
-            
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables();
-                Configuration = builder.Build();
             var appSettings = this.Configuration.GetSection("AppSettings").Get<AppSettings>();
 
             
@@ -46,29 +40,32 @@ namespace Interworks.API
 
             // configure jwt authentication
             var key = Encoding.ASCII.GetBytes(appSettings.secret);
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
+            
+            services
+                .AddAuthentication(x =>
                 {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
 
             // configure DI for application services
-
+            services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
+            services.AddMvc();
+            
             services
-                .AddCors()
-
+                .AddCors()                
                 .AddScoped<IUserService, UserService>()
                 .AddScoped(a => new SmtpClient(smtp_host, _smtp_port) {
                     DeliveryMethod = SmtpDeliveryMethod.Network,

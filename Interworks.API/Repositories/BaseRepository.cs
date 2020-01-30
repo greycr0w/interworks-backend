@@ -5,14 +5,13 @@ using Interworks.API.Interfaces;
 using Interworks.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Interworks.API.Services {
-    public class BaseRepositoryAsyncService<T>  : IRepositoryAsync<T> where T : class, IPrimaryEntity {
-        
+namespace Interworks.API.Repositories {
+    public class BaseRepository<T> : IRepositoryAsync<T> where T : class, IPrimaryEntity {
         protected readonly ApplicationDbContext db;
 
         protected readonly DbSet<T> dbset;
         
-        public BaseRepositoryAsyncService(ApplicationDbContext db, DbSet<T> dbset) {
+        public BaseRepository(ApplicationDbContext db, DbSet<T> dbset) {
             this.db = db;
             this.dbset = dbset;
         }
@@ -44,14 +43,14 @@ namespace Interworks.API.Services {
         }
 
         public async Task<T> createAsync(T student) {
-            student.created_at = DateTimeOffset.Now;
+            student.createdAt = DateTimeOffset.Now;
             await dbset.AddAsync(student);
             await db.SaveChangesAsync();
             return student;
         }
 
         public async Task<T> updateAsync(T student) {
-            student.updated_at = DateTimeOffset.Now;
+            student.updatedAt = DateTimeOffset.Now;
             dbset.Update(student);
             await db.SaveChangesAsync();
             return student;
