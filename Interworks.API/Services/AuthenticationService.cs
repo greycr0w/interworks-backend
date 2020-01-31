@@ -17,7 +17,9 @@ namespace Interworks.API.Services {
         private readonly IRepositoryAsync<User> _userRepository;
         private readonly AppSettings _appSettings;
         
-
+        //TODO: this is a very fast implementation of Identity to be able to have user context
+        //I should have a different repository for Accounts and not use the userRepository
+        
         public AuthenticationService(IRepositoryAsync<User> userRepository, IOptions<AppSettings> appSettings) {
             this._appSettings = appSettings.Value;
             this._userRepository = userRepository;

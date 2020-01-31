@@ -2,7 +2,7 @@ using System;
 using Interworks.API.Interfaces;
 
 namespace Interworks.API.Models {
-    public class Order : IPrimaryEntity{
+    public class Order : IPrimaryModel{
         public Guid id { get; set; }
         
         public DateTimeOffset createdAt { get; set; }

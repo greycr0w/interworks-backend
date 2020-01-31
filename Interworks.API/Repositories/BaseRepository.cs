@@ -6,7 +6,7 @@ using Interworks.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Interworks.API.Repositories {
-    public class BaseRepository<T> : IRepositoryAsync<T> where T : class, IPrimaryEntity {
+    public class BaseRepository<T> : IRepositoryAsync<T> where T : class, IPrimaryModel {
         protected readonly ApplicationDbContext db;
 
         protected readonly DbSet<T> dbset;

@@ -5,7 +5,7 @@ using Interworks.API.Interfaces;
 
 namespace Interworks.API.Models {
     
-    public class Discount : IPrimaryEntity {
+    public class Discount : IPrimaryModel {
 
         [Key]
         public Guid id { get; set; }
@@ -24,7 +24,13 @@ namespace Interworks.API.Models {
         
         public DateTimeOffset startsAt { get; set; }
         
-        public List<User> eligibleUsers { get; set; }
+        public List<UserDiscounts> userDiscounts { get; set; }        //discount can apply to one or more users
+
+        public Guid productId { get; set; }         //discount involves a product upon which 1 or more users have a discount available for
+
+        
+        
+        
 
     }
 

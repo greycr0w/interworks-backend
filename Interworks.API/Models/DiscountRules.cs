@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Interworks.API.Models {
@@ -13,7 +14,9 @@ namespace Interworks.API.Models {
         
         public decimal? thresholdAmount { get; set; }
 
-        public int maxUses { get; set; }
+        public int? maxUses { get; set; }
+        
+        public List<Discount> discounts { get; set; }
     }
 
  

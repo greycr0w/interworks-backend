@@ -1,7 +1,7 @@
 using System;
 
 namespace Interworks.API.Interfaces {
-    public interface IPrimaryEntity {
+    public interface IPrimaryModel {
         
         Guid id { get; set; }
 

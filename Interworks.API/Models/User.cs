@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
 using Interworks.API.Interfaces;
 
 namespace Interworks.API.Models
 {
-    public class User : IPrimaryEntity
+    public class User : IPrimaryModel
     {
+        public Guid id { get; set; }
+        public DateTimeOffset createdAt { get; set; }
+        public DateTimeOffset? updatedAt { get; set; }
+        
         public string firstName { get; set; }
         
         public string lastName { get; set; }
@@ -15,8 +20,20 @@ namespace Interworks.API.Models
         
         public string token { get; set; }
         
-        public Guid id { get; set; }
-        public DateTimeOffset createdAt { get; set; }
-        public DateTimeOffset? updatedAt { get; set; }
+        public string phone { get; set; }
+
+        public int? countryId { get; set; }
+        
+        public virtual Country country { get; set; }
+        
+        public string city { get; set; }
+
+        public string address_line { get; set; }
+
+        public string zip_code { get; set; }
+        
+        public List<UserDiscounts> userDiscounts { get; set; }
+
+      
     }
 }
