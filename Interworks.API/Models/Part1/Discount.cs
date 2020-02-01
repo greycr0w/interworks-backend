@@ -18,13 +18,17 @@ namespace Interworks.API.Models {
         
         public decimal amount { get; set; }
         
-        public DateTimeOffset expiresAt { get; set; }
+        public DateTimeOffset? expiresAt { get; set; }
         
-        public DateTimeOffset startsAt { get; set; }
+        public DateTimeOffset? startsAt { get; set; }
         
         public bool isFixed { get; set; }
 
         public int priority { get; set; }
+        
+        public decimal? thresholdAmount { get; set; }
+        
+        public string code { get; set; }
         
         public bool isAutomaticallyApplied { get; set; }
 

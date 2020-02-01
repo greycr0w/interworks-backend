@@ -32,5 +32,9 @@ namespace Interworks.API.Models
 
         public string zip_code { get; set; }
 
+        public virtual List<UsedDiscount> usedDiscounts { get; set; }
+        
+        public virtual List<Order> userOrders { get; set; }
+        
     }
 }

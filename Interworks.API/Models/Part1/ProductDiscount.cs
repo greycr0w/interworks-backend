@@ -6,10 +6,10 @@ namespace Interworks.API.Models {
         
         public Guid productId { get; set; } 
         
-        public Product product { get; set; }
+        public virtual Product product { get; set; }
         
         public Guid discountId { get; set; }
         
-        public Discount discount { get; set; }
+        public virtual Discount discount { get; set; }
     }
 }

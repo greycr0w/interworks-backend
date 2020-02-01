@@ -18,7 +18,7 @@ namespace Interworks.API.Controllers {
         
         [HttpGet]
         public IActionResult GetAll() {
-            var products = _productService.getAll();
+            var products = _productService.getProducts();
             return Ok(products);
         }
     }
