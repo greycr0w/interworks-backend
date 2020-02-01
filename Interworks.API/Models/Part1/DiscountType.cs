@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Interworks.API.Models {
     
-    public class DiscountRules {
+    public class DiscountType {
         [Key]
         public Guid id { get; set; }
 
         public Guid discountId { get; set; }
+
+        public string? code { get; set; }
         
-        public decimal amount { get; set; }
+        public bool automaticallyApplied { get; set; }
         
         public decimal? thresholdAmount { get; set; }
 
-        public int? maxUses { get; set; }
-        
         public List<Discount> discounts { get; set; }
     }
 

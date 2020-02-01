@@ -22,7 +22,7 @@ namespace Interworks.API.Controllers
 
         [HttpGet]
         public IActionResult GetAll() {
-            var users = _userService.GetAll();
+            var users = _userService.getAll();
             return Ok(users);
         }
     }

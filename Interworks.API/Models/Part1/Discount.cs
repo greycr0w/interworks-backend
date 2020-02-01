@@ -14,24 +14,26 @@ namespace Interworks.API.Models {
 
         public string name { get; set; }
         
-        public bool isFixed { get; set; }
-
-        public int priority { get; set; }
-        
         public string description { get; set; }
+        
+        public decimal amount { get; set; }
         
         public DateTimeOffset expiresAt { get; set; }
         
         public DateTimeOffset startsAt { get; set; }
         
-        public List<UserDiscounts> userDiscounts { get; set; }        //discount can apply to one or more users
+        public bool isFixed { get; set; }
 
-        public Guid productId { get; set; }         //discount involves a product upon which 1 or more users have a discount available for
+        public int priority { get; set; }
+        
+        public bool isAutomaticallyApplied { get; set; }
 
-        
-        
-        
+        public int? maxUses { get; set; } //maxUses is a discount for all users until certain amount of appliance is met
 
+        public int? maxUsesPerUser { get; set; }
+        public virtual List<ProductDiscount> productDiscounts { get; set; }         //discount involves a product upon which 1 or more users have a discount available for
+        
+        public virtual List<UsedDiscount> usedDiscounts { get; set; }
     }
 
    

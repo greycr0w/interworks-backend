@@ -21,14 +21,14 @@ namespace Interworks.API.Repositories {
         }
         
         public async Task<T> findAsync(Guid id) {
-            var student = await dbset.SingleAsync(a => a.id == id);
-            return student;
+            var tObject = await dbset.SingleAsync(a => a.id == id);
+            return tObject;
         }
 
         public async Task<bool> deleteAsync(Guid id) {
             try {
                 
-                // this happens on db DELETE FROM students WHERE this.id = id
+                // this happens on db DELETE FROM tobject WHERE this.id = id
                 dbset.RemoveRange(
                     dbset.Where(a => a.id == id)
                 );
@@ -42,18 +42,18 @@ namespace Interworks.API.Repositories {
             }
         }
 
-        public async Task<T> createAsync(T student) {
-            student.createdAt = DateTimeOffset.Now;
-            await dbset.AddAsync(student);
+        public async Task<T> createAsync(T tObject) {
+            tObject.createdAt = DateTimeOffset.Now;
+            await dbset.AddAsync(tObject);
             await db.SaveChangesAsync();
-            return student;
+            return tObject;
         }
 
-        public async Task<T> updateAsync(T student) {
-            student.updatedAt = DateTimeOffset.Now;
-            dbset.Update(student);
+        public async Task<T> updateAsync(T tObjext) {
+            tObjext.updatedAt = DateTimeOffset.Now;
+            dbset.Update(tObjext);
             await db.SaveChangesAsync();
-            return student;
+            return tObjext;
         }
     }
 }

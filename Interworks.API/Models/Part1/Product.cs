@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Interworks.API.Interfaces;
 
 namespace Interworks.API.Models {
@@ -16,12 +17,16 @@ namespace Interworks.API.Models {
         
         public Guid categoryId { get; set; }
         
+        public int validityDays { get; set; }
         public virtual Category category { get; set; } 
 
         public DateTimeOffset createdAt { get; set; }
         
         public DateTimeOffset? updatedAt { get; set; }
 
+        public List<ProductDiscount> productDiscounts { get; set; }
+        
+        
         
     }
 }

@@ -4,6 +4,6 @@ using Interworks.API.Models;
 
 namespace Interworks.API.Interfaces {
     public interface IUserService {
-        IEnumerable<User> GetAll();
+        IEnumerable<User> getAll();
     }
 }

@@ -24,7 +24,7 @@ namespace Interworks.API.Services
             this._userRepository = userRepository;
         }
         
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> getAll()
         {
             return _userRepository.find();
         }

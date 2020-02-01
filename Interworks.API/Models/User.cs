@@ -31,9 +31,6 @@ namespace Interworks.API.Models
         public string address_line { get; set; }
 
         public string zip_code { get; set; }
-        
-        public List<UserDiscounts> userDiscounts { get; set; }
 
-      
     }
 }

@@ -11,6 +11,6 @@ namespace Interworks.API.Interfaces {
         
     public interface IRepositoryAsync<TModel> : IRepositoryAsyncOut<TModel> where TModel : IPrimaryModel {
         Task<TModel> createAsync(TModel tObject);
-        Task<TModel> updateAsync(TModel tObject);
+        Task<TModel> updateAsync(TModel tObjext);
     }
 }

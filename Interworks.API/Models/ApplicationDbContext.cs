@@ -51,17 +51,16 @@ namespace Interworks.API.Models {
                 .WithOne(e => e.category);
             
             //many to many example
-            modelBuilder.Entity<UserDiscounts>()
-                .HasKey(ud => new {ud.userId , ud.discountId });  
-            modelBuilder.Entity<UserDiscounts>()
+            modelBuilder.Entity<ProductDiscount>()
+                .HasKey(ud => new {ud.productId , ud.discountId });  
+            modelBuilder.Entity<ProductDiscount>()
                 .HasOne(ud => ud.discount)
-                .WithMany(d => d.userDiscounts)
+                .WithMany(d => d.productDiscounts)
                 .HasForeignKey(ud => ud.discountId);  
-            modelBuilder.Entity<UserDiscounts>()
-                .HasOne(bc => bc.user)
-                .WithMany(c => c.userDiscounts)
-                .HasForeignKey(bc => bc.userId);
-            
+            modelBuilder.Entity<ProductDiscount>()
+                .HasOne(bc => bc.product)
+                .WithMany(c => c.productDiscounts)
+                .HasForeignKey(bc => bc.productId);
         }
     }
 }
