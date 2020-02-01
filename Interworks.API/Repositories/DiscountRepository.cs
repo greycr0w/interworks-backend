@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Interworks.API.Entities;
+using Interworks.API.Entities.Part1;
 using Interworks.API.Interfaces;
-using Interworks.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Interworks.API.Repositories {

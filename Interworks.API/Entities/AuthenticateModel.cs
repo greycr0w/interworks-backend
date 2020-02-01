@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Interworks.API.Models
+namespace Interworks.API.Entities
 {
     public class AuthenticateModel
     {

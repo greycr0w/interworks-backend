@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Interworks.API.Interfaces;
 
-namespace Interworks.API.Models {
+namespace Interworks.API.Entities.Part1 {
     public class Category : IPrimaryModel{
         public Guid id { get; set; }
         

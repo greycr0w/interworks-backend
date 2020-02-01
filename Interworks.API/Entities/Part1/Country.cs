@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Interworks.API.Models {
+namespace Interworks.API.Entities.Part1 {
 
     public class Country {
         [Key]

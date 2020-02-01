@@ -1,6 +1,6 @@
 using System;
 
-namespace Interworks.API.Models {
+namespace Interworks.API.Entities.Part1 {
  
     public class ProductDiscount {
         

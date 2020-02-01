@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Interworks.API.Models;
+using Interworks.API.Entities;
 
 namespace Interworks.API.Interfaces {
     public interface IAuthenticationService {

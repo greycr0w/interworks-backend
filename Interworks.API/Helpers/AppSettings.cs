@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using Interworks.API.Models;
 
 namespace Interworks.API.Helpers
 {

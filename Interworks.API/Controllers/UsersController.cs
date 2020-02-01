@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Interworks.API.Services;
 using System.Linq;
 using Interworks.API.Interfaces;
-using Interworks.API.Models;
 
 namespace Interworks.API.Controllers
 {

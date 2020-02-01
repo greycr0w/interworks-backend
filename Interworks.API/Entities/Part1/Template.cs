@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Interworks.API.Models {
+namespace Interworks.API.Entities.Part1 {
     public class Template {
         [Key]
         public Guid id { get; set; }

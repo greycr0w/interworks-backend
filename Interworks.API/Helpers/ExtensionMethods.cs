@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Interworks.API.Models;
+using Interworks.API.Entities;
 
 namespace Interworks.API.Helpers
 {

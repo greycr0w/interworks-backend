@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Interworks.API.Interfaces;
 
-namespace Interworks.API.Models {
+namespace Interworks.API.Entities.Part1 {
     
     public class Discount : IPrimaryModel {
 

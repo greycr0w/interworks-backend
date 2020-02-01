@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Interworks.API.Interfaces;
 
-namespace Interworks.API.Models {
+namespace Interworks.API.Entities.Part1 {
     public class Product : IPrimaryModel {
         //subscription
         public Guid id { get; set; }
@@ -24,6 +24,8 @@ namespace Interworks.API.Models {
         
         public DateTimeOffset? updatedAt { get; set; }
 
+        public DateTimeOffset? deletedAt { get; set; }
+        
         public virtual List<ProductDiscount> productDiscounts { get; set; }
         
         public virtual List<Order> productOrders { get; set; }

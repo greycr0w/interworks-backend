@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Interworks.API.Entities.Part1;
 using Interworks.API.Interfaces;
-using Interworks.API.Models;
 using Interworks.API.Repositories;
 
 namespace Interworks.API.Services {

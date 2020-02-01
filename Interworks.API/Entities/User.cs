@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Interworks.API.Entities.Part1;
+using Interworks.API.Entities.Part2;
 using Interworks.API.Interfaces;
 
-namespace Interworks.API.Models
+namespace Interworks.API.Entities
 {
     public class User : IPrimaryModel
     {
@@ -35,6 +37,8 @@ namespace Interworks.API.Models
         public virtual List<UsedDiscount> usedDiscounts { get; set; }
         
         public virtual List<Order> userOrders { get; set; }
+        
+        public virtual List<Data> datum { get; set; }
         
     }
 }

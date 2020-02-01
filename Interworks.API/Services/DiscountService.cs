@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Interworks.API.Entities.Part1;
 using Interworks.API.Interfaces;
-using Interworks.API.Models;
 using Interworks.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 

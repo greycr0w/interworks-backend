@@ -1,4 +1,4 @@
-using Interworks.API.Models;
+using Interworks.API.Entities;
 using Interworks.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
