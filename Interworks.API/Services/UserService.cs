@@ -18,9 +18,9 @@ namespace Interworks.API.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepositoryAsync<User> _userRepository;
+        private readonly UserRepository _userRepository;
 
-        public UserService(IRepositoryAsync<User> userRepository) {
+        public UserService(UserRepository userRepository) {
             this._userRepository = userRepository;
         }
         

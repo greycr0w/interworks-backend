@@ -33,7 +33,7 @@ namespace Interworks.API.Services {
         
         
         public IQueryable<DiscountedProduct> getDiscountsForProducts(IQueryable<Product> products) {
-            var discountedProducts = _discountRepository.getDiscountsForProducts(products);
+            var discountedProducts = _discountRepository.getDiscountsOfProducts(products);
             return discountedProducts;
         }
 

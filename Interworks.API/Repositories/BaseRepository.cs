@@ -6,14 +6,13 @@ using Interworks.API.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Interworks.API.Repositories {
-    public class BaseRepository<T> : IRepositoryAsync<T> where T : class, IPrimaryModel {
+    public class BaseRepository<T> : IRepositoryAsync<T> where T : class, IPrimaryEntity {
         protected readonly ApplicationDbContext db;
-
         protected readonly DbSet<T> dbset;
         
-        public BaseRepository(ApplicationDbContext db, DbSet<T> dbset) {
+        public BaseRepository(ApplicationDbContext db) {
             this.db = db;
-            this.dbset = dbset;
+            this.dbset = db.Set<T>();
         }
         
         public IQueryable<T> find() {

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -32,6 +33,7 @@ namespace Interworks.API.Entities {
         public virtual DbSet<FieldOption> fieldOptions { get; set; }
         
         public virtual DbSet<Page> pages { get; set; }
+        
         public virtual DbSet<User> users { get; set; }
 
 
@@ -43,27 +45,43 @@ namespace Interworks.API.Entities {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
 
+
+            modelBuilder.Entity<Order>()
+                .HasOne(a => a.product)
+                .WithMany()
+                .HasForeignKey(a => a.productId);
+            
+            modelBuilder.Entity<User>()
+                .HasMany(a => a.datum)
+                .WithOne(b => b.user)
+                .HasForeignKey(c => c.userId);
+            
+            modelBuilder.Entity<User>()
+                .HasMany(a => a.orders)
+                .WithOne(b => b.user)
+                .HasForeignKey(c => c.userId);
+            
+            modelBuilder.Entity<FieldOption>()
+                .HasMany(a => a.datum)
+                .WithOne()
+                .HasForeignKey(d => d.fieldOptionId);
+            
+            modelBuilder.Entity<Data>()
+                .HasOne(a => a.user)
+                .WithMany(c => c.datum)
+                .HasForeignKey(d => d.userId);
+
+            modelBuilder.Entity<Data>()
+                .HasOne(a => a.field)
+                .WithMany(c => c.datum)
+                .HasForeignKey(b => b.fieldId);
+            
             modelBuilder.Entity<Page>()
                 .HasMany(a => a.fields)
                 .WithOne(b => b.page)
                 .HasForeignKey(c => c.pageId);
             
-            
-            
-            modelBuilder.Entity<UsedDiscount>()
-                .HasKey(ad => new {ad.userId, ad.discountId});
-
-            modelBuilder.Entity<UsedDiscount>()
-                .HasOne(a => a.discount)
-                .WithMany(b => b.usedDiscounts)
-                .HasForeignKey(c => c.discountId);
-            
-            modelBuilder.Entity<UsedDiscount>()
-                .HasOne(a => a.user)
-                .WithMany(b => b.usedDiscounts)
-                .HasForeignKey(c => c.userId);
-
-            
+              
             modelBuilder.Entity<Country>()
                 .HasIndex(a => a.code)
                 .IsUnique();
@@ -79,6 +97,20 @@ namespace Interworks.API.Entities {
                 .WithOne(e => e.category)
                 .HasForeignKey(c => c.categoryId);
             
+            
+            
+            
+            modelBuilder.Entity<UsedDiscount>()
+                .HasKey(ad => new {ad.userId, ad.discountId});
+            modelBuilder.Entity<UsedDiscount>()
+                .HasOne(a => a.discount)
+                .WithMany(b => b.usedDiscounts)
+                .HasForeignKey(c => c.discountId);
+            modelBuilder.Entity<UsedDiscount>()
+                .HasOne(a => a.user)
+                .WithMany(b => b.usedDiscounts)
+                .HasForeignKey(c => c.userId);
+
             //many to many example
             modelBuilder.Entity<ProductDiscount>()
                 .HasKey(ud => new {ud.productId , ud.discountId });  
@@ -90,6 +122,20 @@ namespace Interworks.API.Entities {
                 .HasOne(bc => bc.product)
                 .WithMany(c => c.productDiscounts)
                 .HasForeignKey(bc => bc.productId);
+            
+            
+            
+            //INSERTS
+            
+            
+            modelBuilder.Entity<User>().HasData(
+                new User() { id  = Guid.NewGuid(), username = "test", password = "test", type = UserType.USER },
+                new User() { id  = Guid.NewGuid(), username = "test", password = "test", type = UserType.CLIENT }
+            );
+            modelBuilder.Entity<Product>().HasData(
+                new Product() { id  = Guid.NewGuid(), name = "Product Name", price = 340, description = "This is a sample subscription product", cycle = 6}
+                
+            );
         }
     }
 }

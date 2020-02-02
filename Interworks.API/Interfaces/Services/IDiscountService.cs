@@ -10,6 +10,8 @@ namespace Interworks.API.Interfaces {
     public interface IDiscountService {
         public IQueryable<DiscountedProduct> getDiscountsForProducts(IQueryable<Product> products);
         public DiscountAppliedProduct applyDiscount(DiscountedProduct product);
+        
+        List<DiscountAppliedProduct> getListingsWithDiscountApplied(IQueryable<Product> allProducts);
 
     }
 }

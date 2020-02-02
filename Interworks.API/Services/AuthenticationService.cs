@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Interworks.API.Entities;
 using Interworks.API.Helpers;
 using Interworks.API.Interfaces;
+using Interworks.API.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -14,13 +15,13 @@ using Microsoft.IdentityModel.Tokens;
 namespace Interworks.API.Services {
     public class AuthenticationService : IAuthenticationService{
         
-        private readonly IRepositoryAsync<User> _userRepository;
+        private readonly UserRepository _userRepository;
         private readonly AppSettings _appSettings;
         
         //TODO: this is a very fast implementation of Identity to be able to have user context
         //I should have a different repository for Accounts and not use the userRepository
         
-        public AuthenticationService(IRepositoryAsync<User> userRepository, IOptions<AppSettings> appSettings) {
+        public AuthenticationService(UserRepository userRepository, IOptions<AppSettings> appSettings) {
             this._appSettings = appSettings.Value;
             this._userRepository = userRepository;
         }

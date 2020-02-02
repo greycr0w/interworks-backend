@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Interworks.API.Entities;
+using Interworks.API.Entities.Part1;
+using Interworks.API.Entities.Part2;
 using Interworks.API.Helpers;
 using Interworks.API.Interfaces;
+using Interworks.API.Repositories;
 using Interworks.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -63,10 +66,11 @@ namespace Interworks.API
             // configure DI for application services
             services.Configure<AppSettings>(this.Configuration.GetSection("AppSettings"));
             services.AddMvc();
-            
+         
+                
+
             services
-                .AddCors()                
-                .AddScoped<IUserService, UserService>()
+                .AddCors()
                 .AddScoped(a => new SmtpClient(smtp_host, _smtp_port) {
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
@@ -79,6 +83,28 @@ namespace Interworks.API
                     ))
                 .AddControllers()
                 .AddNewtonsoftJson();
+            
+            //services
+            services
+                .AddScoped<IProductService, ProductService>()
+                .AddScoped<IUserService, UserService>()
+                .AddScoped<IDiscountService, DiscountService>()
+                .AddScoped<IAuthenticationService, AuthenticationService>();
+            
+            
+            //repositories
+            services
+                .AddScoped<UserRepository>()
+                .AddScoped<IRepositoryAsync<Category>, BaseRepository<Category>>()
+                .AddScoped<IRepositoryAsync<Country>,BaseRepository<Country>>()
+                .AddScoped<IRepositoryAsync<Discount>,BaseRepository<Discount>>()
+                .AddScoped<IRepositoryAsync<Order>,BaseRepository<Order>>()
+                .AddScoped<ProductRepository>()
+                .AddScoped<IRepositoryAsync<Data>,BaseRepository<Data>>()
+                .AddScoped<IRepositoryAsync<Field>,BaseRepository<Field>>()
+                .AddScoped<IRepositoryAsync<FieldOption>,BaseRepository<FieldOption>>()
+                .AddScoped<IRepositoryAsync<Page>,BaseRepository<Page>>()
+                .AddScoped<IDiscountRepository, DiscountRepository>();
 
         }
 

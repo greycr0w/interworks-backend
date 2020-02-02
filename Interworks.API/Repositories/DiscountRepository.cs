@@ -16,8 +16,8 @@ namespace Interworks.API.Repositories {
         
     }
     
-    public class DiscountRepository : BaseRepository<Discount>  {
-        public DiscountRepository(ApplicationDbContext db) : base(db, db.discounts) {
+    public class DiscountRepository :  BaseRepository<Discount>, IDiscountRepository {
+        public DiscountRepository(ApplicationDbContext db) : base(db) {
             
         }
 

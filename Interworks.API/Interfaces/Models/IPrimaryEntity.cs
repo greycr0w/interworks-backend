@@ -1,8 +1,7 @@
 using System;
 
 namespace Interworks.API.Interfaces {
-    public interface IPrimaryModel {
-        
+    public interface IPrimaryEntity {
         Guid id { get; set; }
 
         DateTimeOffset createdAt { get; set; }

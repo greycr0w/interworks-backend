@@ -5,7 +5,7 @@ using Interworks.API.Interfaces;
 
 namespace Interworks.API.Entities.Part1 {
     
-    public class Discount : IPrimaryModel {
+    public class Discount : IPrimaryEntity {
 
         [Key]
         public Guid id { get; set; }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Interworks.API.Repositories {
     public class UserRepository : BaseRepository<User> {
-        public UserRepository(ApplicationDbContext db) : base(db, db.users) {
+        public UserRepository(ApplicationDbContext db) : base(db) {
             
         }
     }

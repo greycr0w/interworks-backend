@@ -1,8 +1,10 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using Interworks.API.Interfaces;
 
 namespace Interworks.API.Entities.Part1 {
-    public class Order : IPrimaryModel{
+    public class Order : IPrimaryEntity{
+        [Key]
         public Guid id { get; set; }
         
         public DateTimeOffset createdAt { get; set; }
@@ -13,7 +15,7 @@ namespace Interworks.API.Entities.Part1 {
         
         public DateTimeOffset endsAt { get; set; }
 
-        public int cycle { get; set; } //every number of months to charge the amount that this order was ordered with
+        public int monthsCycle { get; set; } //every number of months to charge the amount that this order was ordered with
         
         public decimal amount { get; set; } //charge this amount every cycle
         
@@ -25,7 +27,11 @@ namespace Interworks.API.Entities.Part1 {
 
         public Guid userId { get; set; }
         
+        public virtual User user { get; set; }
+        
         public Guid productId { get; set; }
+        
+        public virtual Product product { get; set; }
 
       
     }
