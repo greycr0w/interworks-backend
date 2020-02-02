@@ -133,7 +133,7 @@ namespace Interworks.API.Entities {
                 new User() { id  = Guid.NewGuid(), username = "test", password = "test", type = UserType.CLIENT }
             );
             modelBuilder.Entity<Product>().HasData(
-                new Product() { id  = Guid.NewGuid(), name = "Product Name", price = 340, description = "This is a sample subscription product", cycle = 6}
+                new Product() { id  = Guid.NewGuid(), name = "Product Name", price = 340, description = "This is a sample subscription product", monthsCycle = 6, monthsActive = 24}
                 
             );
         }
