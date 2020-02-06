@@ -15,7 +15,7 @@ namespace Interworks.API.Entities.Part1 {
         
         public DateTimeOffset endsAt { get; set; }
 
-        public int monthsCycle { get; set; } //every number of months to charge the amount that this order was ordered with
+        public int? monthsCycle { get; set; } //every number of months to charge the amount that this order was ordered with OR IT might have been payed immediately for X amount of time
         
         public decimal amount { get; set; } //charge this amount every cycle
         
@@ -24,7 +24,7 @@ namespace Interworks.API.Entities.Part1 {
         public int validityMonths { get; set; } //validity of product in months 
         
         public string description { get; set; }
-
+        
         public Guid userId { get; set; }
         
         public virtual User user { get; set; }

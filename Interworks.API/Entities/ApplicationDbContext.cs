@@ -129,13 +129,35 @@ namespace Interworks.API.Entities {
             
             
             modelBuilder.Entity<User>().HasData(
-                new User() { id  = Guid.NewGuid(), username = "test", password = "test", type = UserType.USER },
-                new User() { id  = Guid.NewGuid(), username = "test", password = "test", type = UserType.CLIENT }
+                new User() { id  = Guid.NewGuid(), username = "test", password = "test", type = UserType.USER }
             );
+            
+            var catguid = Guid.NewGuid();
+            modelBuilder.Entity<Category>().HasData(
+                new Category() { id  = catguid, name = "Product Name"}
+            );
+
+
+            var productId = Guid.NewGuid();
+            var product = new Product() {
+                id = productId, name = "Product Name", price = 340,
+                description = "This is a sample subscription product", monthsCycle = 6, monthsActive = 24,
+                categoryId = catguid
+            };
+
             modelBuilder.Entity<Product>().HasData(
-                new Product() { id  = Guid.NewGuid(), name = "Product Name", price = 340, description = "This is a sample subscription product", monthsCycle = 6, monthsActive = 24}
-                
+                product
             );
+            
+            var discountId = Guid.NewGuid();
+            var discount = new Discount() {id = discountId, description = "this is a sample discount", isAutomaticallyApplied = true, expiresAt = new DateTimeOffset(2021, 5, 1, 8, 6, 32, 
+                    new TimeSpan(1, 0, 0)), amount = 50, isFixed = true, priority = 1};
+                
+            modelBuilder.Entity<Discount>().HasData(
+                 discount
+                          );
+            
+    
         }
     }
 }

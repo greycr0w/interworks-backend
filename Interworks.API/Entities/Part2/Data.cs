@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Interworks.API.Interfaces;
 
 namespace Interworks.API.Entities.Part2 {
-    public class Data : IPrimaryEntity {
+    public class Data : ISoftDeletePrimaryEntity {
         [Key]
         public Guid id { get; set; }
         public DateTimeOffset createdAt { get; set; }
@@ -25,5 +25,6 @@ namespace Interworks.API.Entities.Part2 {
         
         public  Guid fieldId { get; set; } //implemented
 
+        public DateTimeOffset deletedAt { get; set; }
     }
 }

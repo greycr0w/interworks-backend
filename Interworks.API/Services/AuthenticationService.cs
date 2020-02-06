@@ -29,7 +29,6 @@ namespace Interworks.API.Services {
         public async Task<User> authenticate(string username, string password) {
             var user = await _userRepository.find().Where(a => a.username == username).SingleAsync();
             
-            // return null if user not found
             if (user == null)
                 return null;
 
@@ -37,8 +36,7 @@ namespace Interworks.API.Services {
                 return null;
             }
 
-            // authentication successful so generate jwt token
-            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenHandler = new JwtSecurityTokenHandler(); //generate jwt since auth was successful
             var key = Encoding.ASCII.GetBytes(_appSettings.secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {

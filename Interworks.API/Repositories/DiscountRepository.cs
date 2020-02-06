@@ -22,13 +22,14 @@ namespace Interworks.API.Repositories {
         }
 
         public IQueryable<DiscountedProduct> getDiscountsOfProducts(IQueryable<Product> products) {
+            var now = DateTimeOffset.UtcNow;
             var result = products
                 .Select(a => new DiscountedProduct() {
                     product = a,
                     discounts = a.productDiscounts
                         .Select(b => b.discount)
                         .Where(b => b.isAutomaticallyApplied)
-                        .Where(b => b.expiresAt < DateTimeOffset.UtcNow)
+                        .Where(b => b.expiresAt < now)
                         .OrderBy(b => b.priority)
                         .ToList()
                 });

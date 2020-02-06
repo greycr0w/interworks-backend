@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Interworks.API.Entities;
+using Interworks.API.Interfaces;
 using Interworks.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,20 +9,20 @@ namespace Interworks.API.Controllers {
     
     [Authorize]
     [ApiController]
-    [Microsoft.AspNetCore.Components.Route("[controller]")]
+    [Route("[controller]")]
     public class AuthenticationController : ControllerBase {
 
-        private AuthenticationService _authenticationService;
+        private readonly IAuthenticationService _authenticationService;
 
-        public AuthenticationController(AuthenticationService authenticationService) {
+        public AuthenticationController(IAuthenticationService authenticationService) {
 
             this._authenticationService = authenticationService;
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] AuthenticateModel model) {
-            var user = _authenticationService.authenticate(model.username, model.password);
+        [HttpPost("login")]
+        public async Task<IActionResult> Authenticate([FromBody] AuthenticateModel model) {
+            var user = await _authenticationService.authenticate(model.username, model.password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });

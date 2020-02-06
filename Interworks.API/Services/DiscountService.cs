@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,8 +34,20 @@ namespace Interworks.API.Services {
         
         
         public IQueryable<DiscountedProduct> getDiscountsForProducts(IQueryable<Product> products) {
-            var discountedProducts = _discountRepository.getDiscountsOfProducts(products);
-            return discountedProducts;
+            
+            var now = DateTimeOffset.UtcNow;
+            var result = products
+                .Select(a => new DiscountedProduct() {
+                    product = a,
+                    discounts = a.productDiscounts
+                        .Select(b => b.discount)
+                        .Where(b => b.isAutomaticallyApplied)
+                        .Where(b => b.expiresAt > now)
+                        .OrderBy(b => b.priority)
+                        .ToList()
+                });
+            
+            return result;
         }
 
         public DiscountAppliedProduct applyDiscount(DiscountedProduct product) {

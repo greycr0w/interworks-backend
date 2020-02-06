@@ -7,7 +7,7 @@ using Interworks.API.Services;
 namespace Interworks.API.Interfaces {
     public interface IProductService {
 
-        List<DiscountAppliedProduct> getProducts();
+        List<DiscountAppliedProduct> getProductsForClients();
         IQueryable<Product> getAll();
     }
 }

@@ -99,7 +99,7 @@ namespace Interworks.API
                 .AddScoped<IRepositoryAsync<Country>,BaseRepository<Country>>()
                 .AddScoped<IRepositoryAsync<Discount>,BaseRepository<Discount>>()
                 .AddScoped<IRepositoryAsync<Order>,BaseRepository<Order>>()
-                .AddScoped<ProductRepository>()
+                .AddScoped<IRepositoryAsync<Product>, BaseRepository<Product>>()
                 .AddScoped<IRepositoryAsync<Data>,BaseRepository<Data>>()
                 .AddScoped<IRepositoryAsync<Field>,BaseRepository<Field>>()
                 .AddScoped<IRepositoryAsync<FieldOption>,BaseRepository<FieldOption>>()
